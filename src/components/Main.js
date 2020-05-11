@@ -3,6 +3,8 @@ import {Route, Switch} from 'react-router-dom';
 import Customers from "./Customers";
 import Trainings from "./Trainings";
 import CalendarComponent from "./Calendar";
+import Chart from "./Charts";
+import BarChart from "./Charts";
 
 
 const Main  = () => (
@@ -11,6 +13,7 @@ const Main  = () => (
         <Route path="/customers" component={Customers}/>
         <Route path="/trainings" component={Trainings}/>
         <Route path="/calendar" component={CalendarComponent}/>
+        <Route path="/chart" component={BarChart}/>
     </Switch>
 );
 

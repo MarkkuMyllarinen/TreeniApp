@@ -7,13 +7,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-
 export default function Addtraining(props) {
     const [open, setOpen] = React.useState(false);
     const [training, setTraining] = React.useState({
-        date: '', activity: '', duration: '', customer: ''
+        date: '', time: '', activity: '', duration: '', customer: ''
     });
-
+    let datetime = '';
 
 
     const handleClickOpen = () => {
@@ -26,6 +25,7 @@ export default function Addtraining(props) {
     };
 
     const handleOnChange = (event) => {
+
         setTraining({...training, [event.target.name]: event.target.value});
     };
 
@@ -35,23 +35,24 @@ export default function Addtraining(props) {
         handleClose();
     };
 
-    return(
+    return (
         <div>
             <Button color="primary" onClick={handleClickOpen}>
                 Add training
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Edit car</DialogTitle>
+                <DialogTitle id="form-dialog-title">Uusi treeni asiakkaalle</DialogTitle>
                 <DialogContent>
+
                     <TextField
                         autoFocus
-                        margin="dense"
                         name="date"
-                        value={training.date}
+                        margin="normal"
+                        type="datetime-local" // EI TOIMI FIREFOXISSA.....
                         onChange={e => handleOnChange(e)}
-                        label="Date muodossa (YYYY-MM-DD)"
+                        value={training.date}
                         fullWidth
-                    /> <TextField
+                    /><TextField
                     margin="dense"
                     value={training.activity}
                     name="activity"

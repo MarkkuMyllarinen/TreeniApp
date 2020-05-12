@@ -68,6 +68,7 @@ function Trainings() {
         <div>
             <ReactTable className="App" data={listItems}
                         columns={columns} sortable={true}
+                        filterable={true}
                         defaultPageSize={20}
                         defaultSorted={defaultSorted}/>
         </div>

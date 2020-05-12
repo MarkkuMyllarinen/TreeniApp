@@ -5,6 +5,7 @@ import Trainings from "./Trainings";
 import CalendarComponent from "./Calendar";
 import Chart from "./Charts";
 import BarChart from "./Charts";
+import TrainingDurationChart from "./Charts";
 
 
 const Main  = () => (
@@ -13,7 +14,7 @@ const Main  = () => (
         <Route path="/customers" component={Customers}/>
         <Route path="/trainings" component={Trainings}/>
         <Route path="/calendar" component={CalendarComponent}/>
-        <Route path="/chart" component={BarChart}/>
+        <Route path="/chart" component={TrainingDurationChart}/>
     </Switch>
 );
 

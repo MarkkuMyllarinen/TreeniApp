@@ -1,59 +1,39 @@
 import React from "react";
+import lodash from 'lodash';
+import {
+    BarChart, Bar, XAxis, YAxis
+} from 'recharts';
 
-export default function BarChart() {
-    let myMap = new Map()
-
-
+export default function TrainingDurationChart() {
     const [list, setList] = React.useState([]);
-    const [activityList, setActivityList] = React.useState();
 
 
     function fetchData() {
         fetch('https://customerrest.herokuapp.com/gettrainings')
             .then(response => response.json())
             .then(responseData => {
-                setList(responseData);
+                setList(lodash(responseData)
+                    .groupBy(list => list.activity)
+                    .map((value, key) => (
+                        {activity: key, totalamount: lodash.sumBy(value, 'duration')}
+                    ))
+                    .value());
             })
     }
 
 
     React.useEffect(() => {
         fetchData();
-
     }, []);
-
-    calculateTimeOfActivitys();
-
-    function calculateTimeOfActivitys() {
-        console.log("CALCULATE")
-        for (let i = 0; i < list.length; i++) {
-            if (!myMap.has(list[i].activity)) {
-                myMap.set(list[i].activity, list[i].duration)
-            } else {
-                myMap.set(list[i].activity, myMap.get(list[i].activity) + list[i].duration)
-            }
-        }
-            console.log(Array.from(myMap))
-        let array = Array.from(myMap);
-        console.log(array)
-
-
-
-        let objectArray = [{
-            activity: '',
-            duration:''
-        }]
-
-
-        console.log(objectArray)
-
-    }
 
 
     return (
-        <div>
-
-
+        <div className="App">
+            <BarChart width={1000} height={400} data={list}>
+                <XAxis dataKey="activity"/>
+                <YAxis label={{value: 'Kesto minuuteissa', angle: 90, position: 'insideLeft'}}/>
+                <Bar dataKey="totalamount" fill="#49d157"/>
+            </BarChart>
         </div>
     )
 }

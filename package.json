@@ -9,6 +9,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "chart.js": "^2.9.3",
+    "lodash": "^4.17.15",
     "moment": "^2.25.1",
     "moment-timezone": "^0.5.28",
     "react": "^16.13.1",
@@ -21,7 +22,9 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-table-v6": "^6.8.6",
-    "react-widgets": "^4.5.0"
+    "react-widgets": "^4.5.0",
+    "rechart": "^0.0.1",
+    "recharts": "^1.8.5"
   },
   "scripts": {
     "start": "react-scripts start",
